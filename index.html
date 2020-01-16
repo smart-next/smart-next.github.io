@@ -78,17 +78,25 @@
 					<div class="col-md-4">
 					<div class="name-zig"></div>
 						<p>FICO Score</p>
-<!-- 						<p align = "justify">• FICO determines your credibility and impacts your mortgage</br>• How to increaes your FICO score?</br>• How to pick up right credit card?</p> -->
+						<form>
+							Current FICO Score : <input type="text" id="firstNumber" maxlength="4" size="4"/><br>
+							Target FICO Score: <input type="text" id="secondNumber" maxlength="4" size="4"/><br>
+							If you have $300,000 30 Years Mortagage,
+							<input type="button" onClick="calculateFICO()" Value="Save Money Now" />
+						</form>
+						<p>The Money Saved:  <br>
+							$ <span id = "result" class="bold"></span>
+						</p>
 					</div>
 					<div class="col-md-4">
 					<div class="name-zig2"></div>
 						<p>Power of compounding interest</p>
-<!-- 						<p align = "justify">• How to earn more than 3% returns for your savings?</br>• How to choose between different investment instruments based on their risks?</br></p> -->
+						<p align = "justify">Save $ <span class = 'bold'>165,000</span> at 65 years old, </br>if you save $25 per week starting at 25 years old with an interest rate of 5%.</p>
 					</div>
 					<div class="col-md-4">
 					<div class="name-zig3"></div>
 						<p>Healthcare</p>
-<!-- 						<p align = "justify">• How to choose different healthcare plans?</br>• What is "deductable"?</br>•Can I get redemption after calling the ambulence?</p> -->
+						<p align = "justify">Save <span class = 'bold'>118%</span> to <span class = 'bold'>1382%</span> on bills by staying "in the network" </p>
 					</div>
 					
 				</div><! --/col-lg-8-->
@@ -293,7 +301,8 @@
     <script src="js/smoothscroll.js"></script>
 	<script src="js/jquery.stellar.min.js"></script>
 	<script src="js/fancybox/jquery.fancybox.js"></script>
-	<script> $(function(){ jQuery("#includedContent").load("img/3D_PCA_Visualization_Cl_pis_gm_euclidean.html"); }); </script>    
+<!-- 	<script> $(function(){ jQuery("#includedContent").load("img/3D_PCA_Visualization_Cl_pis_gm_euclidean.html"); }); </script>  -->   
+	</script>
 	<script src="js/main.js"></script>
 		<script>
 		$(function(){
@@ -309,6 +318,45 @@
         //    fancybox
           jQuery(".fancybox").fancybox();
       });
+	</script>
+	<script type ="text/javascript">
+		function monthlyPayment(num)
+		{
+			if (num<=639){
+	        	payment = 1740;
+	        }
+	        else if (num <= 659)
+	        {
+	        	payment = 1638;
+	        }
+	        else if (num <= 679)
+	        {
+	        	payment = 1559;
+	        }
+	        else if (num <= 699)
+	        {
+	        	payment = 1521;
+	        }
+	        else if (num <= 759)
+	        {
+	        	payment = 1489;
+	        }
+	        else
+	        {
+	        	payment = 1450;
+	        }
+	        return payment;
+		}
+	</script>
+	<script type="text/javascript">
+		function calculateFICO()
+		{
+	        num1 = document.getElementById("firstNumber").value;
+	        num2 = document.getElementById("secondNumber").value;
+	        payment1 = monthlyPayment(num1);
+	        payment2 = monthlyPayment(num2);
+	        document.getElementById("result").innerHTML = (payment1 - payment2)*360;
+		}
 	</script>
   </body>
 </html>
